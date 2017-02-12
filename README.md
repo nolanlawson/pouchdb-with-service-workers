@@ -4,7 +4,7 @@ pouchdb-with-service-workers
 Challenges
 ----
 
-1. You cannot have long-running tasks inside of a Service Worker, because the browser will just terminate the Service Worker after a (browser-defined) timeout. So e.g. you cannot do `db.replicate({live: true, retry: true})`. (This is to prevent rogue Service Workers. Service Workers are technically fire-and-forget; you shouldn't depend on shared global in-memory state.)
+1. You cannot have long-running tasks inside of a Service Worker, because the browser will just terminate the Service Worker after a (browser-defined) timeout. So e.g. you cannot do `db.replicate({live: true, retry: true})`. (This is to prevent rogue Service Workers; Service Workers are somewhat ephemeral by design.)
 2. All replications to and from the local database need to flow through standard ServiceWorker events such as `'sync'` and `'push'`.
 
 Design
